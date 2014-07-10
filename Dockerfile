@@ -4,14 +4,14 @@ FROM debian:jessie
 MAINTAINER Paul Guelpa
 
 # You need to specify your install token
-# ENV INSTALLTOKEN <OrganizationID>:<API Key>
+# ENV APICREDS <OrganizationID>:<API Key>
 
 # You can optionally add any environment variables you want to use in the install script
 # ENV PROVISIONHOSTNAME <gopher>
 
 ADD ./setup_meter.sh /tmp/setup_meter.sh
 
-ONBUILD RUN /tmp/setup_meter.sh -s -i $INSTALLTOKEN
+ONBUILD ADD ./env /tmp/bprobe-install-env
+ONBUILD RUN . /tmp/bprobe-install-env && /tmp/setup_meter.sh -s
 
-CMD -I bprobe
-ENTRYPOINT /usr/bin/bprobe
+CMD /usr/bin/bprobe -I bprobe

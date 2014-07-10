@@ -59,7 +59,6 @@ map RHEL 6 Santiago
 # -----------------------------------------------------------------------------
 
 APIHOST="api.boundary.com"
-APICREDS=
 TARGET_DIR="/etc/bprobe"
 
 METERTAGS=
