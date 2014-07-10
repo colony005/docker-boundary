@@ -13,5 +13,6 @@ ADD ./setup_meter.sh /tmp/setup_meter.sh
 
 ONBUILD ADD ./env /tmp/bprobe-install-env
 ONBUILD RUN . /tmp/bprobe-install-env && /tmp/setup_meter.sh -s
+ONBUILD RUN rm /tmp/bprobe-install-env /tmp/setup_meter.sh
 
 CMD /usr/bin/bprobe -I bprobe
